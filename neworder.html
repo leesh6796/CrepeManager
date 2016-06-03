@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+
+	<script src="js/ajax.js"></script>
+	<script src="js/layout.js"></script>
+
+	<title>PIAST Crepe - new order</title>
+
+	<script>
+		function order()
+		{
+			var n_strawberry = $('#n_strawberry').val();
+			var n_banana = $('#n_banana').val();
+
+			if(n_strawberry < 0 || n_banana < 0)
+			{
+				alert('음수는 안받습니다');
+			}
+			else if(isNaN(n_strawberry) || isNaN(n_banana))
+			{
+				alert('숫자만 입력해주세요');
+			}
+			else if(n_strawberry > 30 || n_banana > 30)
+			{
+				alert('이상한 숫자 넣지 마세요 ㅡㅡ');
+			}
+			else
+			{
+				var parameter = "process=add&n_strawberry=" + n_strawberry + "&n_banana=" + n_banana;
+				var url = "process/get.php?" + parameter;
+3
+				location.href = url;
+			}
+		}
+	</script>
+</script>
+</head>
+<body class="page" onload="layout();">
+	<div class="jumbotron">
+		<h1>PIAST Crepe Counting</h1>
+		<p>For 2016 Spring KAIST Festival</p>
+		<h6>Copyright 2016. SangHyeon Lee all right reserved.</h6>
+	</div>
+
+	<br />
+
+	<div class="input-group input-group-lg">
+		<span class="input-group-addon" id="sizing-addon1">딸기 크레페</span>
+		<input type="text" class="form-control" id="n_strawberry" placeholder="0" aria-describedby="sizing-addon1" />
+	</div><br />
+	<div class="input-group input-group-lg">
+		<span class="input-group-addon" id="sizing-addon2">바나나 크레페</span>
+		<input type="text" class="form-control" id="n_banana" placeholder="0" aria-describedby="sizing-addon2" />
+	</div><br /><br />
+
+	<div class="btn-group" role="group" aria-label="...">
+		<button class="btn btn-default" style="width:200px; height:60px;" onclick="order();">주문하기</button>
+		<button class="btn btn-default" style="width:200px; height:60px;" onclick="location.href='index.html';">취소하기</button>
+	</div>
+
+	<br /><br /><br /><br /><br /><br />
+</body>
+</html>
